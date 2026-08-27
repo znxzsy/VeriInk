@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="820" viewBox="0 0 1800 820" role="img" aria-labelledby="title desc">
+  <title id="title">VeriInk method overview</title>
+  <desc id="desc">Failure-driven synthetic data generation, validation, review, training, and regression.</desc>
+  <defs>
+    <style>
+      .title{font:700 25px Arial,sans-serif;fill:#172231}.sub{font:16px Arial,sans-serif;fill:#566274}.label{font:700 17px Arial,sans-serif;fill:#24364b}.small{font:14px Arial,sans-serif;fill:#566274}.paper{fill:#fff;stroke:#bac3ce;stroke-width:2}.panel{fill:#fbfbfa;stroke:#aeb8c5;stroke-width:2}.blue{fill:#32679c}.green{fill:#34785d}.red{fill:#b75245}.amber{fill:#b97a2f}.line{stroke:#32679c;stroke-width:4;fill:none}.thin{stroke:#7d8997;stroke-width:2;fill:none}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#32679c"/></marker>
+  </defs>
+  <rect width="1800" height="820" fill="#fafaf8"/>
+  <text x="70" y="62" class="title" font-size="38">VERIINK: FAILURE-DRIVEN DATA SYNTHESIS</text>
+  <text x="70" y="94" class="sub">A reproducible path from model errors to verified training and regression samples</text>
+  <line x1="70" y1="122" x2="1730" y2="122" class="line"/>
+
+  <g transform="translate(70 165)">
+    <rect width="275" height="470" rx="12" class="panel"/><text x="22" y="42" class="title">(a) Failure cases</text>
+    <rect x="25" y="70" width="225" height="92" rx="6" class="paper"/><text x="44" y="105" class="label">835 + 859 = 1594</text><line x1="38" y1="116" x2="223" y2="145" stroke="#b75245" stroke-width="4"/><text x="178" y="146" class="red" font-family="Arial" font-size="20">1694</text>
+    <rect x="25" y="180" width="225" height="92" rx="6" class="paper"/><text x="44" y="215" class="label">3.45 × 0.68 = 23.46</text><line x1="38" y1="226" x2="223" y2="255" stroke="#b75245" stroke-width="4"/><text x="184" y="256" class="red" font-family="Arial" font-size="20">2.346</text>
+    <rect x="25" y="290" width="225" height="92" rx="6" class="paper"/><text x="44" y="326" class="label">725 &lt; 27 × 26</text><circle cx="104" cy="320" r="30" fill="none" stroke="#b75245" stroke-width="3"/>
+    <text x="25" y="421" class="small">Observed errors define</text><text x="25" y="444" class="small">the next data slice.</text>
+  </g>
+
+  <g transform="translate(410 165)">
+    <rect width="275" height="470" rx="12" class="panel"/><text x="22" y="42" class="title">(b) Targeted synthesis</text>
+    <rect x="25" y="72" width="225" height="58" rx="6" fill="#edf3f8" stroke="#9eb6ca"/><text x="42" y="107" class="label">Task specification</text>
+    <rect x="25" y="146" width="104" height="58" rx="6" fill="#edf3f8" stroke="#9eb6ca"/><text x="48" y="181" class="label">Seed</text><rect x="146" y="146" width="104" height="58" rx="6" fill="#edf3f8" stroke="#9eb6ca"/><text x="169" y="181" class="label">Font</text>
+    <rect x="25" y="220" width="104" height="58" rx="6" fill="#edf3f8" stroke="#9eb6ca"/><text x="43" y="255" class="label">Layout</text><rect x="146" y="220" width="104" height="58" rx="6" fill="#edf3f8" stroke="#9eb6ca"/><text x="164" y="255" class="label">Noise</text>
+    <path d="M137 294V335" class="line" marker-end="url(#arrow)"/>
+    <rect x="25" y="350" width="225" height="74" rx="6" class="paper"/><text x="42" y="382" class="label">Synthetic worksheet</text><text x="42" y="405" class="small">image + labels + provenance</text>
+  </g>
+
+  <g transform="translate(750 165)">
+    <rect width="275" height="470" rx="12" class="panel"/><text x="22" y="42" class="title">(c) Automated checks</text>
+    <g transform="translate(25 78)"><rect width="225" height="64" rx="7" fill="#edf7f2" stroke="#80ad98"/><circle cx="30" cy="32" r="13" class="green"/><path d="M23 32l5 5 10-12" stroke="#fff" stroke-width="3" fill="none"/><text x="55" y="38" class="label">Label contract</text></g>
+    <g transform="translate(25 158)"><rect width="225" height="64" rx="7" fill="#edf7f2" stroke="#80ad98"/><circle cx="30" cy="32" r="13" class="green"/><path d="M23 32l5 5 10-12" stroke="#fff" stroke-width="3" fill="none"/><text x="55" y="38" class="label">Ink bounds</text></g>
+    <g transform="translate(25 238)"><rect width="225" height="64" rx="7" fill="#edf7f2" stroke="#80ad98"/><circle cx="30" cy="32" r="13" class="green"/><path d="M23 32l5 5 10-12" stroke="#fff" stroke-width="3" fill="none"/><text x="55" y="38" class="label">File integrity</text></g>
+    <g transform="translate(25 318)"><rect width="225" height="64" rx="7" fill="#edf7f2" stroke="#80ad98"/><circle cx="30" cy="32" r="13" class="green"/><path d="M23 32l5 5 10-12" stroke="#fff" stroke-width="3" fill="none"/><text x="55" y="38" class="label">Reproducibility</text></g>
+    <text x="25" y="430" class="small">Any failed check rejects</text><text x="25" y="453" class="small">the sample.</text>
+  </g>
+
+  <g transform="translate(1090 165)">
+    <rect width="275" height="470" rx="12" class="panel"/><text x="22" y="42" class="title">(d) Human review</text>
+    <rect x="25" y="78" width="225" height="205" rx="7" class="paper"/><text x="45" y="112" class="small">SYNTHETIC SAMPLE</text><text x="45" y="165" font-family="Arial" font-size="28" fill="#293544">953 + 782 =</text><text x="55" y="211" font-family="cursive" font-size="36" fill="#2f6752">1735</text><rect x="42" y="228" width="160" height="30" fill="none" stroke="#b75245" stroke-width="2" stroke-dasharray="6 4"/>
+    <rect x="25" y="310" width="104" height="52" rx="7" fill="#34785d"/><text x="50" y="343" font-family="Arial" font-weight="700" font-size="16" fill="#fff">ACCEPT</text><rect x="146" y="310" width="104" height="52" rx="7" fill="#fff" stroke="#b75245" stroke-width="2"/><text x="170" y="343" font-family="Arial" font-weight="700" font-size="16" fill="#b75245">REJECT</text>
+    <text x="25" y="407" class="small">Reviewers inspect only</text><text x="25" y="430" class="small">machine-validated samples.</text>
+  </g>
+
+  <g transform="translate(1430 165)">
+    <rect width="300" height="470" rx="12" class="panel"/><text x="22" y="42" class="title">(e) Train &amp; regress</text>
+    <rect x="25" y="78" width="250" height="122" rx="7" class="paper"/><text x="43" y="108" class="label">Training batch</text><g fill="#32679c"><rect x="44" y="130" width="28" height="42"/><rect x="84" y="117" width="28" height="55"/><rect x="124" y="102" width="28" height="70"/><rect x="164" y="124" width="28" height="48"/><rect x="204" y="92" width="28" height="80"/></g>
+    <rect x="25" y="220" width="250" height="122" rx="7" class="paper"/><text x="43" y="250" class="label">Regression suite</text><polyline points="44,315 76,294 108,302 140,270 172,280 204,251 244,260" class="line"/><circle cx="244" cy="260" r="6" class="blue"/>
+    <rect x="25" y="365" width="250" height="58" rx="7" fill="#edf3f8" stroke="#9eb6ca"/><text x="54" y="401" class="label">Compare checkpoints</text>
+  </g>
+
+  <path d="M345 400H400M685 400H740M1025 400H1080M1365 400H1420" class="line" marker-end="url(#arrow)"/>
+  <path d="M1580 650V735H205V650" class="line" marker-end="url(#arrow)"/>
+  <text x="655" y="775" font-family="Arial" font-size="22" font-weight="700" fill="#32679c">FAILURES DEFINE THE NEXT BATCH</text>
+</svg>

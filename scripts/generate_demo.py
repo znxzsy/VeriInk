@@ -52,18 +52,6 @@ def font(size: int, bold: bool = False):
     return ImageFont.load_default()
 
 
-def cjk_font(size: int, bold: bool = False):
-    paths = [
-        "/System/Library/Fonts/PingFang.ttc",
-        "/System/Library/Fonts/STHeiti Medium.ttc",
-        "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc" if bold else "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
-    ]
-    for path in paths:
-        if Path(path).exists():
-            return ImageFont.truetype(path, size, index=0)
-    return font(size, bold)
-
-
 def build_review_wall(records: list[dict], gallery: Path) -> None:
     cols, card_w, card_h = 4, 440, 430
     rows = (len(records) + cols - 1) // cols
@@ -71,8 +59,7 @@ def build_review_wall(records: list[dict], gallery: Path) -> None:
     board = Image.new("RGB", (width, height), (249, 249, 248))
     draw = ImageDraw.Draw(board)
     draw.text((55, 30), "SYNTHETIC DATA AUDIT", font=font(42, True), fill=(20, 29, 40))
-    draw.text((55, 82), "合成数据审查", font=cjk_font(25, True), fill=(44, 92, 139))
-    draw.text((285, 88), f"{len(records)} scenes / {len(records) * 5} items / labels + seeds + SHA256", font=font(21), fill=(79, 86, 96))
+    draw.text((55, 88), f"{len(records)} scenes / {len(records) * 5} items / labels + seeds + SHA256", font=font(21), fill=(79, 86, 96))
     draw.line((55, 126, width - 55, 126), fill=(49, 100, 150), width=3)
     draw.text((1570, 77), "CHECKS: PASS", font=font(20, True), fill=(28, 111, 73))
 
@@ -97,10 +84,9 @@ def build_hero(records: list[dict], gallery: Path) -> None:
     draw = ImageDraw.Draw(hero)
     draw.line((62, 46, 62, height - 46), fill=(43, 101, 157), width=5)
     draw.text((104, 70), "VERIINK", font=font(78, True), fill=(19, 28, 39))
-    draw.text((107, 165), "可验证手写仿真引擎", font=cjk_font(38, True), fill=(43, 101, 157))
-    draw.text((107, 220), "VERIFIABLE HANDWRITING SYNTHESIS", font=font(25, True), fill=(72, 81, 92))
-    draw.text((107, 306), "把模型做错的题，批量变成下一轮训练与回归数据。", font=cjk_font(27), fill=(40, 46, 54))
-    draw.text((107, 355), "Turn model failures into training and regression data.", font=font(21), fill=(58, 66, 76))
+    draw.text((107, 170), "VERIFIABLE HANDWRITING SYNTHESIS", font=font(30, True), fill=(43, 101, 157))
+    draw.text((107, 285), "Turn model failures into reproducible", font=font(27), fill=(40, 46, 54))
+    draw.text((107, 330), "training and regression data.", font=font(27), fill=(40, 46, 54))
     draw.line((107, 450, 690, 450), fill=(182, 187, 194), width=2)
     draw.text((107, 478), "SYNTHESIS  /  VALIDATION  /  REGRESSION", font=font(20, True), fill=(43, 101, 157))
     draw.text((107, 530), "PUBLIC DEMO  ·  SYNTHETIC DATA ONLY", font=font(18), fill=(104, 110, 118))
@@ -139,8 +125,8 @@ def build_hardcase_panel() -> None:
     board = Image.new("RGB", (width, height), (250, 250, 248))
     draw = ImageDraw.Draw(board)
     draw.text((65, 42), "SYNTHETIC HARD CASES", font=font(44, True), fill=(20, 29, 40))
-    draw.text((65, 98), "仿真难例：涂改、复杂计算与单位比较", font=cjk_font(25, True), fill=(44, 92, 139))
-    draw.text((1285, 80), "SYNTHETIC DATA ONLY / 仅含仿真数据", font=cjk_font(18), fill=(77, 86, 97))
+    draw.text((65, 101), "CROSS-OUTS  /  DECIMALS  /  MIXED OPERATIONS  /  COMPARISONS", font=font(20, True), fill=(44, 92, 139))
+    draw.text((1450, 80), "SYNTHETIC DATA ONLY", font=font(18), fill=(77, 86, 97))
     draw.line((65, 145, width - 65, 145), fill=(49, 100, 150), width=3)
 
     card_w, card_h = 535, 490
