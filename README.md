@@ -1,59 +1,59 @@
 <p align="center">
-  <img src="assets/hero.png" alt="VeriInk — Verifiable Handwriting Simulation Agent" width="100%" />
+  <img src="assets/hero.png" alt="VeriInk — 可验证手写仿真引擎 / Verifiable Handwriting Synthesis" width="100%" />
 </p>
 
 <p align="center">
-  <strong>Generate. Verify. Learn from every rejected sample.</strong><br/>
-  Verifiable synthetic handwriting data for multimodal training and evaluation.
+  <strong>把模型做错的题，变成下一轮训练数据。</strong><br/>
+  <strong>Turn model failures into the next training batch.</strong>
 </p>
 
 <p align="center">
-  <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB" />
-  <img alt="Synthetic data only" src="https://img.shields.io/badge/data-synthetic%20only-0F9D74" />
-  <img alt="Deterministic" src="https://img.shields.io/badge/rendering-deterministic-7957D5" />
-  <img alt="Public demo" src="https://img.shields.io/badge/edition-public%20demo-E89A3D" />
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.9%2B-356A9A" />
+  <img alt="Synthetic data only" src="https://img.shields.io/badge/Data-Synthetic%20Only-2E7D5B" />
+  <img alt="Deterministic rendering" src="https://img.shields.io/badge/Rendering-Deterministic-495B72" />
 </p>
 
-写得像不像，只是第一关。真正能拿去训练的数据，还要知道它为什么被生成、应该读成什么、有没有被裁切，以及能不能用同一个 seed 再现。
+**摘要 / Abstract.** 基座模型和后训练都需要持续补充新数据，尤其是模型刚刚做错的那一类。VeriInk 把失败样本转成同类型手写场景，完成标签、边界与文件完整性检查后，直接用于训练和回归。模型哪里出错，下一批数据就补哪里。
 
-**VeriInk** 是一个可验证的手写仿真 Agent。它面向 OCR、视觉语言模型和多模态批改任务，生成带标签、随机种子、边界检查和文件哈希的合成场景。正确作答、故意写错、填空、比较、单位换算和小数题可以放在同一批数据里，既能补训练分布，也能专门追着模型的薄弱点造难例。
+Foundation models and post-training runs need fresh data, especially around recent failures. VeriInk turns failed cases into matching handwriting scenes, validates their labels, boundaries, and files, and sends accepted samples into training and regression. New failures decide what the next batch contains.
 
-> 我们持续为后训练与基座模型生产可验证的数据，并把失败样本送回下一轮生成与验收，形成效果自闭环。
-
-## 一批仿真场景长什么样
-
-下面的审查墙由公开版脚本一次性生成。图像、答案、标签、seed 和 SHA256 一一对应；不含真实学生图片，也不是从业务数据里截出来的拼贴。
+## 方法 / Method
 
 <p align="center">
-  <img src="examples/gallery/synthetic_review_wall.png" alt="Synthetic review wall with twelve verified handwriting scenes" width="100%" />
+  <img src="assets/method_overview_cvpr.png" alt="VeriInk bilingual method overview" width="100%" />
 </p>
+
+<p align="center"><sub>流程示意，不代表公开实测指标。 / Method illustration; not a reported benchmark.</sub></p>
+
+一条失败样本先被拆成可控的题目、答案、书写方式与版面条件，再生成对应图像。自动验收负责检查像素边界、标签契约和文件哈希；人工只抽查通过机器门禁的数据。训练或回归发现的新问题会成为下一轮合成条件。
+
+A failed sample is converted into controlled content, answer, writing, and layout conditions. Automated validation checks pixel bounds, label contracts, and file hashes before human review. Failures found during training or regression define the next synthesis batch.
+
+## 仿真难例 / Synthetic Hard Cases
 
 <p align="center">
-  <img src="examples/gallery/scene_03.png" alt="Decimal arithmetic handwriting simulation" width="30%" />
-  <img src="examples/gallery/scene_07.png" alt="Unit conversion handwriting simulation" width="30%" />
-  <img src="examples/gallery/scene_10.png" alt="Fill-in-the-blank handwriting simulation" width="30%" />
+  <img src="assets/synthetic_hardcases_cvpr.png" alt="Six verified synthetic handwriting hard cases" width="100%" />
 </p>
 
-完整公开样例包含 **12 张页面、60 个作答区域**，覆盖两种手写字体、四种纸张风格、多种题型，以及少量故意写错但仍被忠实保留的负样本。每条记录都能在 [`manifest.json`](examples/gallery/manifest.json) 中追到生成参数与验收结果。
+这里展示的是涂改重写、小数计算、较大数运算、单位换算和比较题。六张图全部来自仿真引擎，并经过来源筛选；没有使用真实学生图片。公开清单与哈希见 [`examples/hardcases/manifest.json`](examples/hardcases/manifest.json)。
 
-## 它解决的不是一张图，而是一条数据链路
+These examples cover crossed-out revisions, decimal arithmetic, larger-number operations, unit conversion, and comparison. All six images were produced by the simulator and source-checked. No real student image is included. Their public manifest and hashes are available in [`examples/hardcases/manifest.json`](examples/hardcases/manifest.json).
 
-```mermaid
-flowchart LR
-    A[模型失败样本] --> B[受控仿真场景]
-    B --> C[标签与边界验收]
-    C --> D[人工抽检]
-    D --> E[训练或评测]
-    E --> A
-```
+## 可复现审查集 / Reproducible Audit Set
 
-- **可复现**：同一份规格、字体与 seed 生成相同像素。
-- **可追踪**：每张图同时记录可见答案、目标转写、标签、坐标和哈希。
-- **可做难例**：允许把故意写错的答案原样渲染，不会为了数学正确擅自纠正。
-- **可自动拒绝**：公开版已包含画布边界、标签契约和产物完整性检查。
-- **可接训练**：manifest 是稳定的数据接口，便于接入 SFT、偏好优化和回归评测。
+<p align="center">
+  <img src="examples/gallery/synthetic_review_wall.png" alt="Bilingual synthetic data audit wall with sixteen verified scenes" width="100%" />
+</p>
 
-## 30 秒跑起来
+公开脚本一次生成 **16 张页面、80 个作答区域**，覆盖基础计算、小数、填空、比较、单位换算、故意写错和涂改重写。每张图都带 seed、标签、边界与 SHA256，结果记录在 [`manifest.json`](examples/gallery/manifest.json)。
+
+The public script generates **16 pages and 80 answer regions** in one run. It covers arithmetic, decimals, fill-in-the-blank questions, comparisons, unit conversion, intentional mistakes, and crossed-out revisions. Every image is paired with its seed, labels, bounds, and SHA256 in [`manifest.json`](examples/gallery/manifest.json).
+
+同一个 seed 能重建同一份样本。manifest 记录图片中可见的内容、目标转写，以及作答是否被故意写错。错答案会原样保留，用来训练模型忠实转写，而不是擅自纠正。笔迹出框、标签不一致或文件被修改，验收会直接失败。通过检查的数据可以接入 SFT、DPO/KTO 和回归集。
+
+The same seed rebuilds the same sample. The manifest records what is visible, how it should be transcribed, and whether the response is intentionally wrong. Wrong answers stay wrong, so the model learns to transcribe instead of correcting. Out-of-bounds ink, label mismatches, or modified files fail validation. Accepted samples can feed SFT, DPO/KTO, and regression sets.
+
+## 快速开始 / Quick Start
 
 ```bash
 git clone https://github.com/znxzsy/VeriInk.git
@@ -65,35 +65,37 @@ python scripts/generate_demo.py
 pytest -q
 ```
 
-重新生成后，可以在 `examples/gallery/` 看到 12 张页面、审查墙和对应 manifest。脚本会在生成结束前重新计算哈希并执行验收；有一条不通过就会直接失败。
+命令会重建公开样例、双语主图、审查墙和 manifest，并在结束前重新计算哈希与执行验收；任意一项不通过都会以非零状态退出。
 
-## 公开版里有什么
+The command rebuilds the public examples, bilingual hero, audit wall, and manifest. It recomputes hashes and runs validation before exiting; any failed check returns a non-zero status.
+
+## 仓库结构 / Repository Layout
 
 ```text
 VeriInk/
-├── src/veriink/          # 精简、可读的确定性渲染器与验收器
-├── scripts/              # 一键重建公开样例和审查墙
-├── examples/gallery/     # 12 张纯合成场景与可审计 manifest
-├── assets/fonts/         # OFL 授权字体与许可证
-├── tests/                # 确定性与输入约束测试
-└── docs/                 # 公开版架构与数据边界
+├── src/veriink/          # 确定性渲染与验收 / deterministic rendering and validation
+├── scripts/              # 一键重建公开样例 / one-command public demo build
+├── examples/gallery/     # 可复现审查集 / reproducible audit set
+├── examples/hardcases/   # 仿真难例与哈希 / synthetic hard cases and hashes
+├── assets/fonts/         # 开源字体与许可证 / open fonts and licenses
+├── tests/                # 确定性和输入约束测试 / determinism and input checks
+└── docs/                 # 架构与公开数据边界 / architecture and data boundary
 ```
 
-这个仓库是安全裁剪后的展示版，不包含真实学生数据、生产采样分布、内部服务地址、对象存储路径、上传部署脚本、私有质量阈值、训练集或模型权重。公开页面里的所有内容都可以从仓库代码重新生成。
+## 公开版范围 / Public Release Boundary
 
-## 想把它接到真实训练流程里
+本仓库是安全裁剪后的展示版。它不包含真实学生数据、生产采样分布、内部服务地址、对象存储路径、私有配置、上传部署脚本、训练集或模型权重。公开页面中的训练示例全部为仿真数据。
 
-我们在做的是一套更完整的可验证数据生产能力：针对模型失败模式生成定向样本，自动筛掉语义不一致和视觉不可信的数据，再把通过验收的样本送进训练与回归。
+This repository is a safety-scoped public demo. It excludes real student data, production distributions, internal endpoints, object-storage paths, private configuration, deployment scripts, training sets, and model weights. Every training example shown on the public page is synthetic.
 
-如果你需要以下能力，可以联系微信 **`znxzsy`**：
+## 合作 / Collaboration
 
-- 面向具体业务题型的仿真适配
-- 大规模并发生成与质量门禁
-- 私有化部署和数据隔离
-- 后训练、基座模型与评测链路接入
-- 定向 badcase 增强和效果验证
+完整版本可适配特定题型、扩展并发生成与质量门禁，并接入基座训练、后训练和回归评测。合作或私有化需求请联系微信 **`znxzsy`**。
 
-## Data & license boundary
+The full system can be adapted to domain-specific tasks, scaled for generation and quality gating, and connected to pre-training, post-training, and regression evaluation. For collaboration or private deployment, contact WeChat **`znxzsy`**.
 
-All gallery images are synthetic. The bundled Handlee and Patrick Hand fonts are distributed under the SIL Open Font License; their license files are kept beside the font files. No license is granted for the repository's remaining content unless stated otherwise. See [SECURITY.md](SECURITY.md) for the public data boundary.
+## 数据与许可 / Data and License
 
+本仓库的 gallery 与 hard-case 图片全部为仿真数据。内置字体遵循各自的 SIL Open Font License；除非另有说明，仓库其余内容不自动授予许可。公开数据边界见 [SECURITY.md](SECURITY.md)。
+
+All gallery and hard-case images in this repository are synthetic. Bundled fonts remain under their respective SIL Open Font License files. No license is granted for the remaining repository content unless stated otherwise. See [SECURITY.md](SECURITY.md) for the public data boundary.

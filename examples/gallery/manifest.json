@@ -1,7 +1,7 @@
 {
   "schema": "veriink.public-gallery.v1",
   "notice": "All images and labels in this gallery are synthetic.",
-  "page_count": 12,
+  "page_count": 16,
   "pages": [
     {
       "file": "scene_01.png",
@@ -15,6 +15,7 @@
           "index": 1,
           "prompt": "47 + 26 = ____",
           "visible_answer": "73",
+          "draft_answer": null,
           "expected_transcription": "47 + 26 = 73",
           "grade": 1,
           "ink_bbox": [
@@ -23,6 +24,7 @@
             338,
             253
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -32,6 +34,7 @@
           "index": 2,
           "prompt": "82 - 39 = ____",
           "visible_answer": "43",
+          "draft_answer": null,
           "expected_transcription": "82 - 39 = 43",
           "grade": 1,
           "ink_bbox": [
@@ -40,6 +43,7 @@
             336,
             462
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -49,6 +53,7 @@
           "index": 3,
           "prompt": "6 x 8 = ____",
           "visible_answer": "48",
+          "draft_answer": null,
           "expected_transcription": "6 x 8 = 48",
           "grade": 1,
           "ink_bbox": [
@@ -57,6 +62,7 @@
             306,
             664
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -66,6 +72,7 @@
           "index": 4,
           "prompt": "72 / 9 = ____",
           "visible_answer": "8",
+          "draft_answer": null,
           "expected_transcription": "72 / 9 = 8",
           "grade": 1,
           "ink_bbox": [
@@ -74,6 +81,7 @@
             285,
             863
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -83,6 +91,7 @@
           "index": 5,
           "prompt": "56 ____ 65",
           "visible_answer": "<",
+          "draft_answer": null,
           "expected_transcription": "56 < 65",
           "grade": 1,
           "ink_bbox": [
@@ -91,6 +100,7 @@
             205,
             1079
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -110,6 +120,7 @@
           "index": 1,
           "prompt": "95 - 38 = ____",
           "visible_answer": "58",
+          "draft_answer": null,
           "expected_transcription": "95 - 38 = 58",
           "grade": 0,
           "ink_bbox": [
@@ -118,6 +129,7 @@
             325,
             254
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -127,6 +139,7 @@
           "index": 2,
           "prompt": "34 + 58 = ____",
           "visible_answer": "92",
+          "draft_answer": null,
           "expected_transcription": "34 + 58 = 92",
           "grade": 1,
           "ink_bbox": [
@@ -135,6 +148,7 @@
             332,
             454
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -144,6 +158,7 @@
           "index": 3,
           "prompt": "7 x 9 = ____",
           "visible_answer": "63",
+          "draft_answer": null,
           "expected_transcription": "7 x 9 = 63",
           "grade": 1,
           "ink_bbox": [
@@ -152,6 +167,7 @@
             287,
             669
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -161,6 +177,7 @@
           "index": 4,
           "prompt": "64 / 8 = ____",
           "visible_answer": "8",
+          "draft_answer": null,
           "expected_transcription": "64 / 8 = 8",
           "grade": 1,
           "ink_bbox": [
@@ -169,6 +186,7 @@
             283,
             871
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -178,6 +196,7 @@
           "index": 5,
           "prompt": "19 ____ 17",
           "visible_answer": ">",
+          "draft_answer": null,
           "expected_transcription": "19 > 17",
           "grade": 1,
           "ink_bbox": [
@@ -186,6 +205,7 @@
             200,
             1072
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -205,6 +225,7 @@
           "index": 1,
           "prompt": "3.6 + 2.4 = ____",
           "visible_answer": "6.0",
+          "draft_answer": null,
           "expected_transcription": "3.6 + 2.4 = 6.0",
           "grade": 1,
           "ink_bbox": [
@@ -213,6 +234,7 @@
             391,
             257
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -222,6 +244,7 @@
           "index": 2,
           "prompt": "8.5 - 3.7 = ____",
           "visible_answer": "4.8",
+          "draft_answer": null,
           "expected_transcription": "8.5 - 3.7 = 4.8",
           "grade": 1,
           "ink_bbox": [
@@ -230,6 +253,7 @@
             370,
             453
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -239,6 +263,7 @@
           "index": 3,
           "prompt": "0.4 x 5 = ____",
           "visible_answer": "2",
+          "draft_answer": null,
           "expected_transcription": "0.4 x 5 = 2",
           "grade": 1,
           "ink_bbox": [
@@ -247,6 +272,7 @@
             304,
             669
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -256,6 +282,7 @@
           "index": 4,
           "prompt": "9.6 / 3 = ____",
           "visible_answer": "3.2",
+          "draft_answer": null,
           "expected_transcription": "9.6 / 3 = 3.2",
           "grade": 1,
           "ink_bbox": [
@@ -264,6 +291,7 @@
             344,
             866
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -273,6 +301,7 @@
           "index": 5,
           "prompt": "2.75 ____ 2.57",
           "visible_answer": ">",
+          "draft_answer": null,
           "expected_transcription": "2.75 > 2.57",
           "grade": 1,
           "ink_bbox": [
@@ -281,6 +310,7 @@
             231,
             1076
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -300,6 +330,7 @@
           "index": 1,
           "prompt": "18 + ____ = 46",
           "visible_answer": "28",
+          "draft_answer": null,
           "expected_transcription": "18 + 28 = 46",
           "grade": 1,
           "ink_bbox": [
@@ -308,6 +339,7 @@
             258,
             258
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -317,6 +349,7 @@
           "index": 2,
           "prompt": "____ - 27 = 35",
           "visible_answer": "62",
+          "draft_answer": null,
           "expected_transcription": "62 - 27 = 35",
           "grade": 1,
           "ink_bbox": [
@@ -325,6 +358,7 @@
             162,
             456
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -334,6 +368,7 @@
           "index": 3,
           "prompt": "9 x ____ = 72",
           "visible_answer": "8",
+          "draft_answer": null,
           "expected_transcription": "9 x 8 = 72",
           "grade": 1,
           "ink_bbox": [
@@ -342,6 +377,7 @@
             209,
             660
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -351,6 +387,7 @@
           "index": 4,
           "prompt": "____ / 6 = 7",
           "visible_answer": "42",
+          "draft_answer": null,
           "expected_transcription": "42 / 6 = 7",
           "grade": 1,
           "ink_bbox": [
@@ -359,6 +396,7 @@
             169,
             864
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -368,6 +406,7 @@
           "index": 5,
           "prompt": "53 - ____ = 19",
           "visible_answer": "34",
+          "draft_answer": null,
           "expected_transcription": "53 - 34 = 19",
           "grade": 1,
           "ink_bbox": [
@@ -376,6 +415,7 @@
             237,
             1077
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -395,6 +435,7 @@
           "index": 1,
           "prompt": "86 - 49 = ____",
           "visible_answer": "37",
+          "draft_answer": null,
           "expected_transcription": "86 - 49 = 37",
           "grade": 1,
           "ink_bbox": [
@@ -403,6 +444,7 @@
             340,
             259
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -412,6 +454,7 @@
           "index": 2,
           "prompt": "27 + 65 = ____",
           "visible_answer": "82",
+          "draft_answer": null,
           "expected_transcription": "27 + 65 = 82",
           "grade": 0,
           "ink_bbox": [
@@ -420,6 +463,7 @@
             351,
             462
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -429,6 +473,7 @@
           "index": 3,
           "prompt": "8 x 7 = ____",
           "visible_answer": "56",
+          "draft_answer": null,
           "expected_transcription": "8 x 7 = 56",
           "grade": 1,
           "ink_bbox": [
@@ -437,6 +482,7 @@
             311,
             659
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -446,6 +492,7 @@
           "index": 4,
           "prompt": "81 / 9 = ____",
           "visible_answer": "9",
+          "draft_answer": null,
           "expected_transcription": "81 / 9 = 9",
           "grade": 1,
           "ink_bbox": [
@@ -454,6 +501,7 @@
             282,
             863
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -463,6 +511,7 @@
           "index": 5,
           "prompt": "44 ____ 4 x 11",
           "visible_answer": "=",
+          "draft_answer": null,
           "expected_transcription": "44 = 4 x 11",
           "grade": 1,
           "ink_bbox": [
@@ -471,6 +520,7 @@
             200,
             1075
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -490,6 +540,7 @@
           "index": 1,
           "prompt": "120 + 85 = ____",
           "visible_answer": "205",
+          "draft_answer": null,
           "expected_transcription": "120 + 85 = 205",
           "grade": 1,
           "ink_bbox": [
@@ -498,6 +549,7 @@
             378,
             259
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -507,6 +559,7 @@
           "index": 2,
           "prompt": "400 - 176 = ____",
           "visible_answer": "224",
+          "draft_answer": null,
           "expected_transcription": "400 - 176 = 224",
           "grade": 1,
           "ink_bbox": [
@@ -515,6 +568,7 @@
             398,
             455
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -524,6 +578,7 @@
           "index": 3,
           "prompt": "25 x 4 = ____",
           "visible_answer": "100",
+          "draft_answer": null,
           "expected_transcription": "25 x 4 = 100",
           "grade": 1,
           "ink_bbox": [
@@ -532,6 +587,7 @@
             323,
             661
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -541,6 +597,7 @@
           "index": 4,
           "prompt": "144 / 12 = ____",
           "visible_answer": "12",
+          "draft_answer": null,
           "expected_transcription": "144 / 12 = 12",
           "grade": 1,
           "ink_bbox": [
@@ -549,6 +606,7 @@
             343,
             871
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -558,6 +616,7 @@
           "index": 5,
           "prompt": "305 ____ 350",
           "visible_answer": "<",
+          "draft_answer": null,
           "expected_transcription": "305 < 350",
           "grade": 1,
           "ink_bbox": [
@@ -566,6 +625,7 @@
             222,
             1076
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -585,6 +645,7 @@
           "index": 1,
           "prompt": "2 m = ____ cm",
           "visible_answer": "200",
+          "draft_answer": null,
           "expected_transcription": "2 m = 200 cm",
           "grade": 1,
           "ink_bbox": [
@@ -593,6 +654,7 @@
             330,
             257
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -602,6 +664,7 @@
           "index": 2,
           "prompt": "5 kg = ____ g",
           "visible_answer": "5000",
+          "draft_answer": null,
           "expected_transcription": "5 kg = 5000 g",
           "grade": 1,
           "ink_bbox": [
@@ -610,6 +673,7 @@
             372,
             468
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -619,6 +683,7 @@
           "index": 3,
           "prompt": "90 min = ____ h",
           "visible_answer": "1.5",
+          "draft_answer": null,
           "expected_transcription": "90 min = 1.5 h",
           "grade": 1,
           "ink_bbox": [
@@ -627,6 +692,7 @@
             337,
             664
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -636,6 +702,7 @@
           "index": 4,
           "prompt": "3 L = ____ mL",
           "visible_answer": "3000",
+          "draft_answer": null,
           "expected_transcription": "3 L = 3000 mL",
           "grade": 1,
           "ink_bbox": [
@@ -644,6 +711,7 @@
             327,
             868
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -653,6 +721,7 @@
           "index": 5,
           "prompt": "1 day = ____ h",
           "visible_answer": "24",
+          "draft_answer": null,
           "expected_transcription": "1 day = 24 h",
           "grade": 1,
           "ink_bbox": [
@@ -661,6 +730,7 @@
             309,
             1068
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -680,6 +750,7 @@
           "index": 1,
           "prompt": "14 + 29 = ____",
           "visible_answer": "43",
+          "draft_answer": null,
           "expected_transcription": "14 + 29 = 43",
           "grade": 1,
           "ink_bbox": [
@@ -688,6 +759,7 @@
             339,
             251
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -697,6 +769,7 @@
           "index": 2,
           "prompt": "73 - 26 = ____",
           "visible_answer": "47",
+          "draft_answer": null,
           "expected_transcription": "73 - 26 = 47",
           "grade": 1,
           "ink_bbox": [
@@ -705,6 +778,7 @@
             329,
             461
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -714,6 +788,7 @@
           "index": 3,
           "prompt": "12 x 3 = ____",
           "visible_answer": "36",
+          "draft_answer": null,
           "expected_transcription": "12 x 3 = 36",
           "grade": 1,
           "ink_bbox": [
@@ -722,6 +797,7 @@
             303,
             662
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -731,6 +807,7 @@
           "index": 4,
           "prompt": "56 / 7 = ____",
           "visible_answer": "7",
+          "draft_answer": null,
           "expected_transcription": "56 / 7 = 7",
           "grade": 0,
           "ink_bbox": [
@@ -739,6 +816,7 @@
             292,
             871
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -748,6 +826,7 @@
           "index": 5,
           "prompt": "68 ____ 86",
           "visible_answer": "<",
+          "draft_answer": null,
           "expected_transcription": "68 < 86",
           "grade": 1,
           "ink_bbox": [
@@ -756,6 +835,7 @@
             199,
             1075
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -775,6 +855,7 @@
           "index": 1,
           "prompt": "5.75 + 1.25 = ____",
           "visible_answer": "7",
+          "draft_answer": null,
           "expected_transcription": "5.75 + 1.25 = 7",
           "grade": 1,
           "ink_bbox": [
@@ -783,6 +864,7 @@
             388,
             251
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -792,6 +874,7 @@
           "index": 2,
           "prompt": "10 - 3.45 = ____",
           "visible_answer": "6.55",
+          "draft_answer": null,
           "expected_transcription": "10 - 3.45 = 6.55",
           "grade": 1,
           "ink_bbox": [
@@ -800,6 +883,7 @@
             412,
             459
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -809,6 +893,7 @@
           "index": 3,
           "prompt": "1.2 x 6 = ____",
           "visible_answer": "7.2",
+          "draft_answer": null,
           "expected_transcription": "1.2 x 6 = 7.2",
           "grade": 1,
           "ink_bbox": [
@@ -817,6 +902,7 @@
             343,
             663
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -826,6 +912,7 @@
           "index": 4,
           "prompt": "8.4 / 4 = ____",
           "visible_answer": "2.1",
+          "draft_answer": null,
           "expected_transcription": "8.4 / 4 = 2.1",
           "grade": 1,
           "ink_bbox": [
@@ -834,6 +921,7 @@
             325,
             869
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -843,6 +931,7 @@
           "index": 5,
           "prompt": "0.9 ____ 0.90",
           "visible_answer": "=",
+          "draft_answer": null,
           "expected_transcription": "0.9 = 0.90",
           "grade": 1,
           "ink_bbox": [
@@ -851,6 +940,7 @@
             219,
             1077
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -870,6 +960,7 @@
           "index": 1,
           "prompt": "33 + ____ = 70",
           "visible_answer": "37",
+          "draft_answer": null,
           "expected_transcription": "33 + 37 = 70",
           "grade": 1,
           "ink_bbox": [
@@ -878,6 +969,7 @@
             254,
             253
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -887,6 +979,7 @@
           "index": 2,
           "prompt": "____ - 18 = 24",
           "visible_answer": "42",
+          "draft_answer": null,
           "expected_transcription": "42 - 18 = 24",
           "grade": 1,
           "ink_bbox": [
@@ -895,6 +988,7 @@
             158,
             460
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -904,6 +998,7 @@
           "index": 3,
           "prompt": "7 x ____ = 49",
           "visible_answer": "7",
+          "draft_answer": null,
           "expected_transcription": "7 x 7 = 49",
           "grade": 1,
           "ink_bbox": [
@@ -912,6 +1007,7 @@
             210,
             667
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -921,6 +1017,7 @@
           "index": 4,
           "prompt": "____ / 8 = 6",
           "visible_answer": "48",
+          "draft_answer": null,
           "expected_transcription": "48 / 8 = 6",
           "grade": 1,
           "ink_bbox": [
@@ -929,6 +1026,7 @@
             165,
             874
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -938,6 +1036,7 @@
           "index": 5,
           "prompt": "100 - ____ = 62",
           "visible_answer": "38",
+          "draft_answer": null,
           "expected_transcription": "100 - 38 = 62",
           "grade": 1,
           "ink_bbox": [
@@ -946,6 +1045,7 @@
             260,
             1077
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -965,6 +1065,7 @@
           "index": 1,
           "prompt": "69 + 17 = ____",
           "visible_answer": "86",
+          "draft_answer": null,
           "expected_transcription": "69 + 17 = 86",
           "grade": 1,
           "ink_bbox": [
@@ -973,6 +1074,7 @@
             356,
             256
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -982,6 +1084,7 @@
           "index": 2,
           "prompt": "92 - 54 = ____",
           "visible_answer": "38",
+          "draft_answer": null,
           "expected_transcription": "92 - 54 = 38",
           "grade": 1,
           "ink_bbox": [
@@ -990,6 +1093,7 @@
             329,
             460
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -999,6 +1103,7 @@
           "index": 3,
           "prompt": "11 x 6 = ____",
           "visible_answer": "67",
+          "draft_answer": null,
           "expected_transcription": "11 x 6 = 67",
           "grade": 0,
           "ink_bbox": [
@@ -1007,6 +1112,7 @@
             319,
             660
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1016,6 +1122,7 @@
           "index": 4,
           "prompt": "96 / 12 = ____",
           "visible_answer": "8",
+          "draft_answer": null,
           "expected_transcription": "96 / 12 = 8",
           "grade": 1,
           "ink_bbox": [
@@ -1024,6 +1131,7 @@
             307,
             865
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1033,6 +1141,7 @@
           "index": 5,
           "prompt": "75 ____ 57",
           "visible_answer": ">",
+          "draft_answer": null,
           "expected_transcription": "75 > 57",
           "grade": 1,
           "ink_bbox": [
@@ -1041,6 +1150,7 @@
             203,
             1075
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1060,6 +1170,7 @@
           "index": 1,
           "prompt": "250 + 375 = ____",
           "visible_answer": "625",
+          "draft_answer": null,
           "expected_transcription": "250 + 375 = 625",
           "grade": 1,
           "ink_bbox": [
@@ -1068,6 +1179,7 @@
             400,
             253
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1077,6 +1189,7 @@
           "index": 2,
           "prompt": "900 - 468 = ____",
           "visible_answer": "432",
+          "draft_answer": null,
           "expected_transcription": "900 - 468 = 432",
           "grade": 1,
           "ink_bbox": [
@@ -1085,6 +1198,7 @@
             394,
             457
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1094,6 +1208,7 @@
           "index": 3,
           "prompt": "32 x 5 = ____",
           "visible_answer": "160",
+          "draft_answer": null,
           "expected_transcription": "32 x 5 = 160",
           "grade": 1,
           "ink_bbox": [
@@ -1102,6 +1217,7 @@
             325,
             664
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1111,6 +1227,7 @@
           "index": 4,
           "prompt": "225 / 15 = ____",
           "visible_answer": "15",
+          "draft_answer": null,
           "expected_transcription": "225 / 15 = 15",
           "grade": 1,
           "ink_bbox": [
@@ -1119,6 +1236,7 @@
             343,
             868
           ],
+          "draft_ink_bbox": null,
           "checks": {
             "render_intent_matches_label": true,
             "inside_canvas": true
@@ -1128,6 +1246,7 @@
           "index": 5,
           "prompt": "480 ____ 48 x 10",
           "visible_answer": "=",
+          "draft_answer": null,
           "expected_transcription": "480 = 48 x 10",
           "grade": 1,
           "ink_bbox": [
@@ -1135,6 +1254,527 @@
             1000,
             225,
             1074
+          ],
+          "draft_ink_bbox": null,
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        }
+      ]
+    },
+    {
+      "file": "scene_13.png",
+      "seed": 4581,
+      "style": "warm",
+      "writer": "handlee",
+      "sha256": "dab5a2714ff81c7fae8141fc7efa17e38bdfaf2bc1aa29993d4e8b21721f5ed5",
+      "verified": true,
+      "slots": [
+        {
+          "index": 1,
+          "prompt": "835 + 859 = ____",
+          "visible_answer": "1694",
+          "draft_answer": "1594",
+          "expected_transcription": "835 + 859 = 1694",
+          "grade": 1,
+          "ink_bbox": [
+            441,
+            172,
+            546,
+            250
+          ],
+          "draft_ink_bbox": [
+            307,
+            176,
+            429,
+            250
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 2,
+          "prompt": "953 + 782 = ____",
+          "visible_answer": "1735",
+          "draft_answer": "1635",
+          "expected_transcription": "953 + 782 = 1735",
+          "grade": 1,
+          "ink_bbox": [
+            438,
+            383,
+            549,
+            459
+          ],
+          "draft_ink_bbox": [
+            307,
+            386,
+            428,
+            462
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 3,
+          "prompt": "668 + 814 = ____",
+          "visible_answer": "1482",
+          "draft_answer": "1472",
+          "expected_transcription": "668 + 814 = 1482",
+          "grade": 1,
+          "ink_bbox": [
+            429,
+            590,
+            541,
+            666
+          ],
+          "draft_ink_bbox": [
+            304,
+            591,
+            416,
+            665
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 4,
+          "prompt": "807 - 468 = ____",
+          "visible_answer": "339",
+          "draft_answer": "349",
+          "expected_transcription": "807 - 468 = 339",
+          "grade": 1,
+          "ink_bbox": [
+            412,
+            791,
+            502,
+            865
+          ],
+          "draft_ink_bbox": [
+            292,
+            795,
+            399,
+            871
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 5,
+          "prompt": "72 x 18 = ____",
+          "visible_answer": "1296",
+          "draft_answer": "1269",
+          "expected_transcription": "72 x 18 = 1296",
+          "grade": 1,
+          "ink_bbox": [
+            402,
+            995,
+            503,
+            1069
+          ],
+          "draft_ink_bbox": [
+            262,
+            996,
+            386,
+            1070
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        }
+      ]
+    },
+    {
+      "file": "scene_14.png",
+      "seed": 4618,
+      "style": "cool",
+      "writer": "patrick",
+      "sha256": "51d8be48a3fadbe8306acb9b9d6bff0d071a5d8601836d44ad6ec84b180606ca",
+      "verified": true,
+      "slots": [
+        {
+          "index": 1,
+          "prompt": "4.875 + 19.68 = ____",
+          "visible_answer": "24.555",
+          "draft_answer": "23.555",
+          "expected_transcription": "4.875 + 19.68 = 24.555",
+          "grade": 1,
+          "ink_bbox": [
+            532,
+            181,
+            660,
+            257
+          ],
+          "draft_ink_bbox": [
+            373,
+            176,
+            519,
+            254
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 2,
+          "prompt": "63.25 - 18.975 = ____",
+          "visible_answer": "44.275",
+          "draft_answer": "45.275",
+          "expected_transcription": "63.25 - 18.975 = 44.275",
+          "grade": 1,
+          "ink_bbox": [
+            519,
+            386,
+            639,
+            462
+          ],
+          "draft_ink_bbox": [
+            381,
+            388,
+            510,
+            466
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 3,
+          "prompt": "3.45 x 0.68 = ____",
+          "visible_answer": "2.346",
+          "draft_answer": "23.46",
+          "expected_transcription": "3.45 x 0.68 = 2.346",
+          "grade": 1,
+          "ink_bbox": [
+            447,
+            582,
+            551,
+            656
+          ],
+          "draft_ink_bbox": [
+            324,
+            591,
+            430,
+            665
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 4,
+          "prompt": "7.392 / 2.4 = ____",
+          "visible_answer": "3.08",
+          "draft_answer": "3.8",
+          "expected_transcription": "7.392 / 2.4 = 3.08",
+          "grade": 1,
+          "ink_bbox": [
+            399,
+            792,
+            493,
+            866
+          ],
+          "draft_ink_bbox": [
+            312,
+            790,
+            388,
+            866
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 5,
+          "prompt": "12.5 x 0.48 = ____",
+          "visible_answer": "6",
+          "draft_answer": "60",
+          "expected_transcription": "12.5 x 0.48 = 6",
+          "grade": 1,
+          "ink_bbox": [
+            401,
+            1000,
+            457,
+            1074
+          ],
+          "draft_ink_bbox": [
+            323,
+            996,
+            392,
+            1072
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        }
+      ]
+    },
+    {
+      "file": "scene_15.png",
+      "seed": 4655,
+      "style": "kraft",
+      "writer": "handlee",
+      "sha256": "ec59fd9b1571eeb8a563b50ea10f3b38bf1b6fac472ddbc3b2a045b7565c80da",
+      "verified": true,
+      "slots": [
+        {
+          "index": 1,
+          "prompt": "1200 - 786 = ____",
+          "visible_answer": "414",
+          "draft_answer": "424",
+          "expected_transcription": "1200 - 786 = 414",
+          "grade": 1,
+          "ink_bbox": [
+            434,
+            177,
+            519,
+            251
+          ],
+          "draft_ink_bbox": [
+            319,
+            183,
+            423,
+            257
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 2,
+          "prompt": "374 + 859 = ____",
+          "visible_answer": "1233",
+          "draft_answer": "1133",
+          "expected_transcription": "374 + 859 = 1233",
+          "grade": 1,
+          "ink_bbox": [
+            415,
+            383,
+            533,
+            463
+          ],
+          "draft_ink_bbox": [
+            302,
+            379,
+            400,
+            453
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 3,
+          "prompt": "36 x 27 = ____",
+          "visible_answer": "972",
+          "draft_answer": "962",
+          "expected_transcription": "36 x 27 = 972",
+          "grade": 1,
+          "ink_bbox": [
+            385,
+            586,
+            477,
+            662
+          ],
+          "draft_ink_bbox": [
+            262,
+            590,
+            373,
+            666
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 4,
+          "prompt": "1728 / 24 = ____",
+          "visible_answer": "72",
+          "draft_answer": "82",
+          "expected_transcription": "1728 / 24 = 72",
+          "grade": 1,
+          "ink_bbox": [
+            389,
+            794,
+            456,
+            868
+          ],
+          "draft_ink_bbox": [
+            297,
+            790,
+            374,
+            864
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 5,
+          "prompt": "6.08 + 3.945 = ____",
+          "visible_answer": "10.025",
+          "draft_answer": "9.025",
+          "expected_transcription": "6.08 + 3.945 = 10.025",
+          "grade": 1,
+          "ink_bbox": [
+            490,
+            994,
+            645,
+            1072
+          ],
+          "draft_ink_bbox": [
+            344,
+            998,
+            478,
+            1072
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        }
+      ]
+    },
+    {
+      "file": "scene_16.png",
+      "seed": 4692,
+      "style": "gray",
+      "writer": "patrick",
+      "sha256": "8762bc1b9b57643e320bef749e61f8e72aa791a7e64d7aa12e300bc53fa99eca",
+      "verified": true,
+      "slots": [
+        {
+          "index": 1,
+          "prompt": "2.5 h = ____ min",
+          "visible_answer": "150",
+          "draft_answer": "120",
+          "expected_transcription": "2.5 h = 150 min",
+          "grade": 1,
+          "ink_bbox": [
+            316,
+            180,
+            396,
+            256
+          ],
+          "draft_ink_bbox": [
+            219,
+            175,
+            303,
+            249
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 2,
+          "prompt": "3.75 kg = ____ g",
+          "visible_answer": "3750",
+          "draft_answer": "3570",
+          "expected_transcription": "3.75 kg = 3750 g",
+          "grade": 1,
+          "ink_bbox": [
+            391,
+            382,
+            493,
+            460
+          ],
+          "draft_ink_bbox": [
+            261,
+            386,
+            374,
+            460
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 3,
+          "prompt": "1.25 x 48 = ____",
+          "visible_answer": "60",
+          "draft_answer": "50",
+          "expected_transcription": "1.25 x 48 = 60",
+          "grade": 1,
+          "ink_bbox": [
+            372,
+            589,
+            434,
+            663
+          ],
+          "draft_ink_bbox": [
+            288,
+            585,
+            357,
+            661
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 4,
+          "prompt": "960 / 12 = ____",
+          "visible_answer": "80",
+          "draft_answer": "90",
+          "expected_transcription": "960 / 12 = 80",
+          "grade": 1,
+          "ink_bbox": [
+            355,
+            795,
+            420,
+            871
+          ],
+          "draft_ink_bbox": [
+            277,
+            797,
+            344,
+            873
+          ],
+          "checks": {
+            "render_intent_matches_label": true,
+            "inside_canvas": true
+          }
+        },
+        {
+          "index": 5,
+          "prompt": "725 ____ 27 x 26",
+          "visible_answer": ">",
+          "draft_answer": "<",
+          "expected_transcription": "725 > 27 x 26",
+          "grade": 1,
+          "ink_bbox": [
+            244,
+            992,
+            300,
+            1066
+          ],
+          "draft_ink_bbox": [
+            170,
+            1001,
+            228,
+            1077
           ],
           "checks": {
             "render_intent_matches_label": true,

@@ -29,6 +29,7 @@ class SlotSpec:
     prompt: str
     answer: str
     grade: int = 1
+    draft_answer: str | None = None
 
     @property
     def transcription(self) -> str:
@@ -80,8 +81,9 @@ def _draw_handwriting(
     font_path: Path,
     rng: random.Random,
     color: tuple[int, int, int],
+    size_range: tuple[int, int] = (47, 58),
 ) -> tuple[int, int, int, int]:
-    size = rng.randint(47, 58)
+    size = rng.randint(*size_range)
     font = _font(font_path, size)
     bbox = font.getbbox(text)
     width = max(54, bbox[2] - bbox[0] + 24)
@@ -98,6 +100,31 @@ def _draw_handwriting(
     y += rng.randint(-5, 4)
     canvas.alpha_composite(patch, (x, y))
     return (x, y, x + patch.width, y + patch.height)
+
+
+def _draw_scribble(
+    canvas: Image.Image,
+    bbox: tuple[int, int, int, int],
+    rng: random.Random,
+    color: tuple[int, int, int],
+) -> None:
+    """Cross out a synthetic draft while keeping the final answer readable."""
+
+    draw = ImageDraw.Draw(canvas)
+    left, top, right, bottom = bbox
+    inset = 6
+    left += inset
+    right -= inset
+    top += 10
+    bottom -= 10
+    for _ in range(6):
+        points = []
+        steps = 5
+        for step in range(steps):
+            x = left + (right - left) * step // (steps - 1)
+            y = rng.randint(top, max(top, bottom))
+            points.append((x, y))
+        draw.line(points, fill=(*color, rng.randint(150, 205)), width=rng.choice((2, 3, 3)))
 
 
 def render_page(
@@ -121,6 +148,8 @@ def render_page(
             raise ValueError("Each prompt needs one blank and one non-empty answer.")
         if slot.grade not in (0, 1):
             raise ValueError("grade must be 0 or 1")
+        if slot.draft_answer is not None and not slot.draft_answer.strip():
+            raise ValueError("draft_answer cannot be empty")
 
     rng = random.Random(seed)
     width, height = 720, 1180
@@ -150,7 +179,8 @@ def render_page(
         prefix_bbox = draw.textbbox((text_x, text_y), prefix, font=print_font)
         blank_x = prefix_bbox[2] + 4
         probe_font = _font(FONT_PATHS[writer], 58)
-        probe_bbox = probe_font.getbbox(slot.answer)
+        probe_text = slot.draft_answer or slot.answer
+        probe_bbox = probe_font.getbbox(probe_text)
         blank_width = min(220, max(126, probe_bbox[2] - probe_bbox[0] + 34))
         if suffix:
             draw.text((blank_x + blank_width, text_y), suffix, font=print_font, fill=(*ink, 255))
@@ -160,23 +190,52 @@ def render_page(
             outline=(220, 103, 96, 150),
             width=2,
         )
-        answer_bbox = _draw_handwriting(
-            image,
-            slot.answer,
-            (blank_x + 5, text_y - 7),
-            FONT_PATHS[writer],
-            rng,
-            hand_color,
+        draft_bbox = None
+        if slot.draft_answer:
+            draft_bbox = _draw_handwriting(
+                image,
+                slot.draft_answer,
+                (blank_x + 5, text_y - 7),
+                FONT_PATHS[writer],
+                rng,
+                hand_color,
+                (42, 50),
+            )
+            _draw_scribble(image, draft_bbox, rng, hand_color)
+            final_x = draft_bbox[2] + 12
+            answer_bbox = _draw_handwriting(
+                image,
+                slot.answer,
+                (final_x, text_y - 9),
+                FONT_PATHS[writer],
+                rng,
+                (45, 89, 76),
+                (38, 47),
+            )
+        else:
+            answer_bbox = _draw_handwriting(
+                image,
+                slot.answer,
+                (blank_x + 5, text_y - 7),
+                FONT_PATHS[writer],
+                rng,
+                hand_color,
+            )
+        all_boxes = [answer_bbox] + ([draft_bbox] if draft_bbox else [])
+        safe_margin = all(
+            box[0] >= 0 and box[1] >= 0 and box[2] <= width and box[3] <= height
+            for box in all_boxes
         )
-        safe_margin = answer_bbox[0] >= 0 and answer_bbox[1] >= 0 and answer_bbox[2] <= width and answer_bbox[3] <= height
         slot_records.append(
             {
                 "index": index,
                 "prompt": slot.prompt,
                 "visible_answer": slot.answer,
+                "draft_answer": slot.draft_answer,
                 "expected_transcription": slot.transcription,
                 "grade": slot.grade,
                 "ink_bbox": list(answer_bbox),
+                "draft_ink_bbox": list(draft_bbox) if draft_bbox else None,
                 "checks": {"render_intent_matches_label": True, "inside_canvas": safe_margin},
             }
         )

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import hashlib
 import json
 import sys
 
@@ -30,6 +31,10 @@ CASES = [
     [("33 + ____ = 70", "37"), ("____ - 18 = 24", "42"), ("7 x ____ = 49", "7"), ("____ / 8 = 6", "48"), ("100 - ____ = 62", "38")],
     [("69 + 17 = ____", "86"), ("92 - 54 = ____", "38"), ("11 x 6 = ____", "67", 0), ("96 / 12 = ____", "8"), ("75 ____ 57", ">")],
     [("250 + 375 = ____", "625"), ("900 - 468 = ____", "432"), ("32 x 5 = ____", "160"), ("225 / 15 = ____", "15"), ("480 ____ 48 x 10", "=")],
+    [("835 + 859 = ____", "1694", 1, "1594"), ("953 + 782 = ____", "1735", 1, "1635"), ("668 + 814 = ____", "1482", 1, "1472"), ("807 - 468 = ____", "339", 1, "349"), ("72 x 18 = ____", "1296", 1, "1269")],
+    [("4.875 + 19.68 = ____", "24.555", 1, "23.555"), ("63.25 - 18.975 = ____", "44.275", 1, "45.275"), ("3.45 x 0.68 = ____", "2.346", 1, "23.46"), ("7.392 / 2.4 = ____", "3.08", 1, "3.8"), ("12.5 x 0.48 = ____", "6", 1, "60")],
+    [("1200 - 786 = ____", "414", 1, "424"), ("374 + 859 = ____", "1233", 1, "1133"), ("36 x 27 = ____", "972", 1, "962"), ("1728 / 24 = ____", "72", 1, "82"), ("6.08 + 3.945 = ____", "10.025", 1, "9.025")],
+    [("2.5 h = ____ min", "150", 1, "120"), ("3.75 kg = ____ g", "3750", 1, "3570"), ("1.25 x 48 = ____", "60", 1, "50"), ("960 / 12 = ____", "80", 1, "90"), ("725 ____ 27 x 26", ">", 1, "<")],
 ]
 
 STYLES = ["warm", "cool", "kraft", "gray"]
@@ -47,74 +52,110 @@ def font(size: int, bold: bool = False):
     return ImageFont.load_default()
 
 
-def build_review_wall(records: list[dict], gallery: Path) -> None:
-    width, height = 1920, 1560
-    board = Image.new("RGB", (width, height), (238, 240, 243))
-    draw = ImageDraw.Draw(board)
-    draw.text((55, 38), "SYNTHETIC REVIEW WALL", font=font(44, True), fill=(24, 33, 45))
-    draw.text((55, 93), "12 deterministic scenes / labels + seeds + SHA256 / public showcase", font=font(24), fill=(76, 87, 102))
-    draw.rounded_rectangle((1510, 36, 1864, 101), radius=22, fill=(216, 243, 232), outline=(112, 188, 157), width=2)
-    draw.text((1560, 58), "ALL CHECKS PASSED", font=font(21, True), fill=(21, 112, 79))
+def cjk_font(size: int, bold: bool = False):
+    paths = [
+        "/System/Library/Fonts/PingFang.ttc",
+        "/System/Library/Fonts/STHeiti Medium.ttc",
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc" if bold else "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+    ]
+    for path in paths:
+        if Path(path).exists():
+            return ImageFont.truetype(path, size, index=0)
+    return font(size, bold)
 
+
+def build_review_wall(records: list[dict], gallery: Path) -> None:
     cols, card_w, card_h = 4, 440, 430
+    rows = (len(records) + cols - 1) // cols
+    width, height = 1920, 150 + rows * 455 + 35
+    board = Image.new("RGB", (width, height), (249, 249, 248))
+    draw = ImageDraw.Draw(board)
+    draw.text((55, 30), "SYNTHETIC DATA AUDIT", font=font(42, True), fill=(20, 29, 40))
+    draw.text((55, 82), "合成数据审查", font=cjk_font(25, True), fill=(44, 92, 139))
+    draw.text((285, 88), f"{len(records)} scenes / {len(records) * 5} items / labels + seeds + SHA256", font=font(21), fill=(79, 86, 96))
+    draw.line((55, 126, width - 55, 126), fill=(49, 100, 150), width=3)
+    draw.text((1570, 77), "CHECKS: PASS", font=font(20, True), fill=(28, 111, 73))
+
     for index, record in enumerate(records):
         row, col = divmod(index, cols)
         x = 45 + col * 468
         y = 145 + row * 455
-        draw.rounded_rectangle((x, y, x + card_w, y + card_h), radius=14, fill=(255, 255, 255), outline=(207, 212, 220), width=2)
+        draw.rectangle((x, y, x + card_w, y + card_h), fill=(255, 255, 255), outline=(190, 195, 202), width=2)
         page = Image.open(gallery / record["file"]).convert("RGB")
         page.thumbnail((230, 326), Image.Resampling.LANCZOS)
         px = x + (card_w - page.width) // 2
         board.paste(page, (px, y + 20))
-        draw.text((x + 20, y + 354), f"CASE {index + 1:02d}  /  seed {record['seed']}", font=font(18, True), fill=(40, 51, 67))
+        draw.text((x + 20, y + 354), f"Fig. {index + 1:02d}  |  seed {record['seed']}", font=font(18, True), fill=(34, 48, 64))
         digest = record["sha256"][:12]
-        draw.text((x + 20, y + 385), f"VERIFIED  sha256:{digest}", font=font(17), fill=(36, 130, 91))
+        draw.text((x + 20, y + 385), f"PASS  |  sha256:{digest}", font=font(17), fill=(32, 107, 75))
     board.save(gallery / "synthetic_review_wall.png", optimize=True)
 
 
 def build_hero(records: list[dict], gallery: Path) -> None:
-    width, height = 1800, 820
-    hero = Image.new("RGB", (width, height), (16, 24, 38))
+    width, height = 1800, 760
+    hero = Image.new("RGB", (width, height), (250, 250, 248))
     draw = ImageDraw.Draw(hero)
-    for y in range(height):
-        mix = y / height
-        color = (16 + int(13 * mix), 24 + int(18 * mix), 38 + int(26 * mix))
-        draw.line((0, y, width, y), fill=color)
-    draw.text((80, 82), "VERIINK", font=font(76, True), fill=(245, 248, 252))
-    draw.multiline_text(
-        (80, 174),
-        "Verifiable Handwriting\nSimulation Agent",
-        font=font(37, True),
-        fill=(132, 222, 188),
-        spacing=5,
-    )
-    draw.multiline_text(
-        (80, 294),
-        "Synthetic scenes you can reproduce, inspect,\nand feed back into the next training pass.",
-        font=font(30),
-        fill=(205, 215, 229),
-        spacing=16,
-    )
-    badges = ["SYNTHETIC", "REPRODUCIBLE", "VERIFIED"]
-    bx = 80
-    for badge in badges:
-        bw = 210 if badge != "REPRODUCIBLE" else 255
-        draw.rounded_rectangle((bx, 448, bx + bw, 505), radius=18, fill=(32, 52, 70), outline=(86, 141, 131), width=2)
-        draw.text((bx + 23, 465), badge, font=font(20, True), fill=(155, 232, 202))
-        bx += bw + 18
-    draw.text((80, 570), "Generate  ->  Validate  ->  Review  ->  Refine", font=font(28, True), fill=(243, 190, 110))
-    draw.text((80, 638), "Public demo edition / no real student data", font=font(22), fill=(139, 154, 174))
+    draw.line((62, 46, 62, height - 46), fill=(43, 101, 157), width=5)
+    draw.text((104, 70), "VERIINK", font=font(78, True), fill=(19, 28, 39))
+    draw.text((107, 165), "可验证手写仿真引擎", font=cjk_font(38, True), fill=(43, 101, 157))
+    draw.text((107, 220), "VERIFIABLE HANDWRITING SYNTHESIS", font=font(25, True), fill=(72, 81, 92))
+    draw.text((107, 306), "把模型做错的题，批量变成下一轮训练与回归数据。", font=cjk_font(27), fill=(40, 46, 54))
+    draw.text((107, 355), "Turn model failures into training and regression data.", font=font(21), fill=(58, 66, 76))
+    draw.line((107, 450, 690, 450), fill=(182, 187, 194), width=2)
+    draw.text((107, 478), "SYNTHESIS  /  VALIDATION  /  REGRESSION", font=font(20, True), fill=(43, 101, 157))
+    draw.text((107, 530), "PUBLIC DEMO  ·  SYNTHETIC DATA ONLY", font=font(18), fill=(104, 110, 118))
+    draw.text((107, 630), "Method overview and reproducible examples", font=font(18), fill=(104, 110, 118))
 
-    for index, record in enumerate(records[:4]):
+    selected = records[-4:]
+    for index, record in enumerate(selected):
         page = Image.open(gallery / record["file"]).convert("RGB")
-        page.thumbnail((210, 510), Image.Resampling.LANCZOS)
-        x = 820 + index * 230
-        y = 132 + (index % 2) * 32
-        shadow = Image.new("RGBA", (page.width + 28, page.height + 28), (0, 0, 0, 0))
-        ImageDraw.Draw(shadow).rounded_rectangle((10, 10, page.width + 18, page.height + 18), radius=15, fill=(0, 0, 0, 95))
-        hero.paste(shadow, (x - 10, y - 10), shadow)
+        page.thumbnail((225, 540), Image.Resampling.LANCZOS)
+        x = 760 + index * 250
+        y = 115 + (index % 2) * 28
+        draw.rectangle((x - 8, y - 8, x + page.width + 8, y + page.height + 8), fill=(255, 255, 255), outline=(174, 179, 186), width=2)
         hero.paste(page, (x, y))
+        draw.text((x, y + page.height + 22), f"({chr(97 + index)}) HARD CASE {index + 1}", font=font(15, True), fill=(58, 68, 80))
     hero.save(ROOT / "assets/hero.png", optimize=True)
+
+
+def build_hardcase_panel() -> None:
+    source = ROOT / "examples/hardcases"
+    manifest_path = source / "manifest.json"
+    if not manifest_path.exists():
+        return
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    files = []
+    for item in manifest["items"]:
+        path = source / item["file"]
+        if not path.is_file():
+            raise SystemExit(f"missing synthetic hard case: {path.name}")
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if digest != item["sha256"]:
+            raise SystemExit(f"SHA256 mismatch for synthetic hard case: {path.name}")
+        files.append(path)
+    if not files:
+        return
+    width, height = 1800, 1260
+    board = Image.new("RGB", (width, height), (250, 250, 248))
+    draw = ImageDraw.Draw(board)
+    draw.text((65, 42), "SYNTHETIC HARD CASES", font=font(44, True), fill=(20, 29, 40))
+    draw.text((65, 98), "仿真难例：涂改、复杂计算与单位比较", font=cjk_font(25, True), fill=(44, 92, 139))
+    draw.text((1285, 80), "SYNTHETIC DATA ONLY / 仅含仿真数据", font=cjk_font(18), fill=(77, 86, 97))
+    draw.line((65, 145, width - 65, 145), fill=(49, 100, 150), width=3)
+
+    card_w, card_h = 535, 490
+    for index, path in enumerate(files[:6]):
+        row, col = divmod(index, 3)
+        x = 65 + col * 575
+        y = 180 + row * 520
+        draw.rectangle((x, y, x + card_w, y + card_h), fill=(255, 255, 255), outline=(188, 194, 202), width=2)
+        sample = Image.open(path).convert("RGB")
+        sample.thumbnail((485, 395), Image.Resampling.LANCZOS)
+        px = x + (card_w - sample.width) // 2
+        py = y + 25 + (395 - sample.height) // 2
+        board.paste(sample, (px, py))
+        draw.text((x + 24, y + 436), f"({chr(97 + index)})  SYNTHETIC HARD CASE {index + 1}", font=font(17, True), fill=(45, 58, 73))
+    board.save(ROOT / "assets/synthetic_hardcases_cvpr.png", optimize=True)
 
 
 def main() -> None:
@@ -144,6 +185,7 @@ def main() -> None:
         raise SystemExit("\n".join(errors))
     build_review_wall(records, gallery)
     build_hero(records, gallery)
+    build_hardcase_panel()
     print(f"Generated and verified {len(records)} synthetic scenes.")
 
 

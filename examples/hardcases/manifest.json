@@ -1,0 +1,13 @@
+{
+  "schema": "veriink.public-hardcases.v1",
+  "notice_zh": "本目录仅包含仿真难例，不含真实学生数据。",
+  "notice_en": "This directory contains synthetic hard cases only. No real student data is included.",
+  "items": [
+    {"file": "sim_hard_01.jpg", "tags": ["crossout_rewrite", "decimal_arithmetic"], "sha256": "4dd4af8f21ca0d8b595bcdd512f48c9b77d5df9d2f4113efc6d4eb4bacba1a42"},
+    {"file": "sim_hard_02.jpg", "tags": ["crossout_rewrite", "decimal_arithmetic"], "sha256": "3b9e0c60c77feda1176c3d7962d7895358abfc889279053fd9bd57e89182c617"},
+    {"file": "sim_hard_03.jpg", "tags": ["crossout_rewrite", "arithmetic_equation"], "sha256": "3fb1e6532c2d8224d0f34cf854c930b1ba1dedbb615de7c9ed11bc81276f7a24"},
+    {"file": "sim_hard_04.jpg", "tags": ["crossout_rewrite", "compound_unit_comparison"], "sha256": "22e332d96d300a014d30b2ee430dd6accdf0a475a04ab5947fe450666f07ed0d"},
+    {"file": "sim_hard_05.jpg", "tags": ["crossout_rewrite", "unit_comparison"], "sha256": "60d3c217a680ef4112d6a17dac1107ea3500d7da665f4b15e1a681ca1f597de8"},
+    {"file": "sim_hard_06.jpg", "tags": ["crossout_rewrite", "numeric_comparison"], "sha256": "6de92e72b20947a283ee1ecfb689a2220c43ec8ae3b6159c8acf08b7cf562c90"}
+  ]
+}
