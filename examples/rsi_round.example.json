@@ -1,0 +1,13 @@
+{
+  "illustrative_only": true,
+  "round_id": "toy-round-001",
+  "repository_role": "synthesis",
+  "reviewed_requirement": "Illustrative transcription error on a revised answer",
+  "source_reference": "toy-source-001",
+  "artifact_reference": "toy-artifact-001",
+  "data_review": "pending",
+  "training_snapshot": null,
+  "evaluation_reference": null,
+  "capability_admission": "pending_external_review",
+  "model_promotion": "pending_external_evaluation"
+}

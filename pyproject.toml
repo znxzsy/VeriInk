@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "veriink"
 version = "0.1.0"
-description = "Verifiable synthetic handwriting scenes for multimodal training and evaluation."
+description = "Verifiable handwriting synthesis for feedback-driven model improvement and RSI research."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = ["Pillow>=10.0"]

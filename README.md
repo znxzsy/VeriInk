@@ -8,15 +8,33 @@
   <img alt="Deterministic rendering" src="https://img.shields.io/badge/Rendering-Deterministic-495B72" />
 </p>
 
-**VeriInk turns model failures into reproducible handwriting data.** A failed case becomes a controlled batch of related worksheets. The renderer records the seed, visible answer, target transcription, ink bounds, and file hash. Samples that fail the checks never enter the training batch.
+**VeriInk is the verifiable synthesis layer for feedback-driven model improvement and RSI research.** Reviewed model failures guide controlled handwriting tasks. The public renderer records the seed, visible answer, target transcription, ink bounds, and file hash, making each synthetic example reproducible and inspectable.
 
 The public edition focuses on the part that is easy to audit: deterministic rendering, intentional mistakes, crossed-out revisions, and an explicit manifest. It is designed for OCR, multimodal grading, post-training, and regression evaluation.
+
+## Role in the RSI workflow
+
+Here, RSI means recursive self-improvement: evidence from one iteration informs the next. VeriInk supplies controlled synthetic practice; [AlignLedger](https://github.com/znxzsy/AlignLedger) supplies human review and auditable feedback. Training and independent evaluation connect these data tools to a research loop.
+
+| Stage | Public support | Evidence boundary |
+| --- | --- | --- |
+| Diagnose a reviewed failure | Manually authored task specifications | No autonomous diagnosis agent is included |
+| Generate related practice | Seeded rendering, wrong answers and revisions | A fixed public task repertoire |
+| Check the artifact | Label-intent checks, bounds and SHA256 | Checks do not replace visual semantic review |
+| Review and freeze | Documented handoff to AlignLedger | Integration requires a domain adapter |
+| Train, compare and feed back | Research workflow documented below | Training and promotion are outside this demo |
+
+[RSI workflow and limitations](docs/RSI_WORKFLOW.md) · [中文流程](docs/RSI_WORKFLOW_ZH.md) · [Illustrative round record](examples/rsi_round.example.json)
+
+<p align="center"><img src="assets/rsi_workflow.svg" alt="Conceptual RSI workflow and public repository boundaries" width="100%" /></p>
+
+The broader research includes executed training/evaluation iterations and a three-seed synthetic sampling pilot. The pilot did not establish an adaptive-sampling advantage. Independently verified capability expansion and real-world transfer remain open. Running this public demo does not reproduce those experiments.
 
 ## Method
 
 <p align="center"><img src="assets/method_overview.svg" alt="VeriInk method overview" width="100%" /></p>
 
-The model's errors define the next data slice. VeriInk converts those errors into task specifications, renders controlled handwriting scenes, checks label and pixel consistency, and sends accepted samples to training or regression. A later failure can be reproduced from its seed and traced back to the exact generation record.
+The diagram shows the intended research workflow. A maintainer translates reviewed errors into task specifications; the public demo renders scenes and checks rendering intent, bounds and file integrity. Human review, training, regression and promotion are separate steps. Reproduction requires the same code, fonts, dependencies, specification and seed.
 
 ## Synthetic hard cases
 
